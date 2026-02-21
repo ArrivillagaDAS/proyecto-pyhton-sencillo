@@ -1,0 +1,16 @@
+[
+    {
+        "tipo": "Pel\u00edcula",
+        "titulo": "Pelicula 1",
+        "autor": "Pelicula 1",
+        "genero": "Pelicula 1",
+        "valoracion": "Pelicula 1"
+    },
+    {
+        "tipo": "M\u00fasica",
+        "titulo": "Musica 1",
+        "autor": "Musica 1",
+        "genero": "Musica 1",
+        "valoracion": "Musica 1"
+    }
+]
