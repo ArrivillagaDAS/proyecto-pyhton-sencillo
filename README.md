@@ -1,0 +1,1 @@
+Este es un proyecto educativo desarrollado en Python que permite gestionar una colección personal de libros, películas y música. El sistema utiliza archivos JSON para garantizar que los datos se guarden permanentemente.
