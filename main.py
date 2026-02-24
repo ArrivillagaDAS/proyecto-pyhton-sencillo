@@ -97,7 +97,7 @@ def ejecucion_guardado():
         elif opc == 2: coleccion = gestor_datos.cargar(); print("Cargado."); funciones.pausa()
         elif opc == 3: break
 
-def ejecucion_principal():
+def main():
     while True:
         print("\n===========================================\n        Administrador de Colección\n===========================================\n1. Añadir un Nuevo Elemento\n2. Ver Todos los Elementos\n3. Buscar un Elemento\n4. Editar un Elemento\n5. Eliminar un Elemento\n6. Ver Elementos por Categoría\n7. Guardar y Cargar Colección\n8. Salir\n===========================================")
         opc = pedir_opcion("Selecciona una opción (1-8): ")
