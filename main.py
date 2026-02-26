@@ -102,11 +102,24 @@ def ejecucion_guardado():
         if opc == 1: gestor_datos.guardar(coleccion); funciones.pausa()
         elif opc == 2: coleccion = gestor_datos.cargar(); print("Cargado."); funciones.pausa()
         elif opc == 3: break
+            
+def promedio_valoraciones(lista):
+    total = len(lista)
+    libros = sum(1 for e in lista if e['tipo'] == "Libro")
+    peliculas = sum(1 for e in lista if e['tipo'] == "Peliculas")
+    musica = sum(1 for e in lista if e['tipo'] == "Musica")
+
+    print(f"\n--- Resumen ---")
+    print(f"Total de elementos: {total}")
+    print(f"Total de Libros agregados: {libros}")
+    print(f"Total de Peliculas agregadas: {peliculas}")
+    print(f"Total de Musica agregada: {musica}")
+
 
 def main():
     while True:
-        print("\n===========================================\n        Administrador de Colección\n===========================================\n1. Añadir un Nuevo Elemento\n2. Ver Todos los Elementos\n3. Buscar un Elemento\n4. Editar un Elemento\n5. Eliminar un Elemento\n6. Ver Elementos por Categoría\n7. Guardar y Cargar Colección\n8. Salir\n===========================================")
-        opc = pedir_opcion("Selecciona una opción (1-8): ", 1, 8)
+        print("\n===========================================\n        Administrador de Colección\n===========================================\n1. Añadir un Nuevo Elemento\n2. Ver Todos los Elementos\n3. Buscar un Elemento\n4. Editar un Elemento\n5. Eliminar un Elemento\n6. Ver Elementos por Categoría\n7. Promedio por categoria\n8. Guardar y Cargar Colección\n9. Salir\n===========================================")
+        opc = pedir_opcion("Selecciona una opción (1-8): ", 1, 9)
         
         if opc == 1: ejecucion_añadir()
         elif opc == 2: funciones.mostrar_formateado(coleccion); funciones.pausa()
@@ -114,6 +127,7 @@ def main():
         elif opc == 4: ejecucion_editar()
         elif opc == 5: ejecucion_eliminar()
         elif opc == 6: ejecucion_categoria()
+        elif opc == 7: promedio_valoraciones(lista); funciones.pausa()
         elif opc == 7: ejecucion_guardado()
         elif opc == 8: gestor_datos.guardar(coleccion); print("¡Adiós!"); break
 
