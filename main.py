@@ -3,16 +3,21 @@ import gestor_datos
 
 coleccion = gestor_datos.cargar()
 
-def pedir_opcion(texto):
-    try:
-        return int(input(texto))
-    except:
-        return 0
+def pedir_opcion(texto, min_opc, max_opc):
+    while True:
+        try:
+            opcion = int(input(texto))
+            if min_opc <= opcion <= max_opc:
+                return opcion
+            else:
+                print(f"Error: Por favor, elige un número entre {min_opc} y {max_opc}.")
+        except ValueError:
+            print("Error: Entrada no válida. Debes ingresar un número entero.")
 
 def ejecucion_añadir():
     while True:
         print("\n===========================================\n        Añadir un Nuevo Elemento\n===========================================\n¿Qué tipo de elemento deseas añadir?\n1. Libro\n2. Película\n3. Música\n4. Regresar al Menú Principal\n===========================================")
-        opc = pedir_opcion("Selecciona una opción (1-4): ")
+        opc = pedir_opcion("Selecciona una opción (1-4): ", 1, 4)
         
         tipos = {1: "Libro", 2: "Película", 3: "Música"}
         if opc in tipos:
@@ -32,7 +37,7 @@ def ejecucion_añadir():
 def ejecucion_buscar():
     while True:
         print("\n===========================================\n        Buscar un Elemento\n===========================================\n¿Cómo deseas buscar?\n1. Buscar por Título\n2. Buscar por Autor/Director/Artista\n3. Buscar por Género\n4. Regresar al Menú Principal\n===========================================")
-        opc = pedir_opcion("Selecciona una opción (1-4): ")
+        opc = pedir_opcion("Selecciona una opción (1-4): ", 1, 4)
         campos = {1: "titulo", 2: "autor", 3: "genero"}
         if opc in campos:
             val = input("Texto a buscar: ")
@@ -44,6 +49,7 @@ def ejecucion_buscar():
 def ejecucion_editar():
     while True:
         funciones.mostrar_formateado(coleccion)
+        opc = pedir_opcion("Selecciona una opción (1-5): ", 1, 5)
         try:
             res = input("\nID a editar (o 's' para salir): ")
             if res.lower() == 's': break
@@ -100,7 +106,7 @@ def ejecucion_guardado():
 def main():
     while True:
         print("\n===========================================\n        Administrador de Colección\n===========================================\n1. Añadir un Nuevo Elemento\n2. Ver Todos los Elementos\n3. Buscar un Elemento\n4. Editar un Elemento\n5. Eliminar un Elemento\n6. Ver Elementos por Categoría\n7. Guardar y Cargar Colección\n8. Salir\n===========================================")
-        opc = pedir_opcion("Selecciona una opción (1-8): ")
+        opc = pedir_opcion("Selecciona una opción (1-8): ", 1, 8)
         
         if opc == 1: ejecucion_añadir()
         elif opc == 2: funciones.mostrar_formateado(coleccion); funciones.pausa()
@@ -112,4 +118,4 @@ def main():
         elif opc == 8: gestor_datos.guardar(coleccion); print("¡Adiós!"); break
 
 if __name__ == "__main__":
-    ejecucion_principal()
+    main()
